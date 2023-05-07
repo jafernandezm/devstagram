@@ -31,7 +31,9 @@
                     <label for="username">Nombre de Usuario</label>
                     <input type="text" name="username" id="username" 
                     placeholder="Tu nombre de usuario"
-                    class="border p-3 w-full rounded-lg">
+                    class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror"
+                    value="{{old('username')}}"
+                    /> 
                 </div>
                 @error('username')
                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">
@@ -42,7 +44,9 @@
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" 
                     placeholder="Tu email"
-                    class="border p-3 w-full rounded-lg">
+                    class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror"
+                    value="{{old('email')}}"
+                    /> 
                 </div>
                 @error('email')
                     <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">

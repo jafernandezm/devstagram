@@ -1,10 +1,10 @@
 
--------Inicios--------
-luego de eso configuramos el comando
+## -------Inicios--------
+# luego de eso configuramos el comando
 ```bash
 sudo nano ~/.bashrc
 ```
-copiamos esto en la parte final
+## copiamos esto en la parte final
 ```bash
 alias sail="./vendor/bin/sail"
 ```
@@ -17,6 +17,8 @@ para migrar es php
 sail php artisan migrate 
 sail npm install
 sail mysql
+sail up
+sail down
 ```
 ------comandos----------------------------------
 Instalar tailwindccss
@@ -39,12 +41,18 @@ describe users;
 ```
 
 -----------------------------------------------------------
-------------comandos de composer laravel-------------------
+## ------------comandos de composer laravel-------------------
 ```bash
 sail artisan make:controller RegistrerController
 sail artisan make:controller Auth\\RegistrerController
+crear tabla
+sail php artisan make:migration add_username_to_users_table
+crear un modelo
+sail php artisan make:model Cliente
+
+sail php artisan migrate:rollback --step=1
 ```
--------------------------------------------------------
+## -------------------------------------------------------
 para hacer las validaciones en espanol lo que hacemos es descargar una repositorio
 https://github.com/MarcoGomesr/laravel-validation-en-espanol
 luego vamos a config
@@ -64,6 +72,8 @@ sail artisan migrate:roolback --step=5
 volver a migrar todo 
 sail php artisan migrate:fresh --seed
 sail artisan make:migration agregar_imagen_user
+
+sail php artisan make:controller LogoutController
 ```
 
 --------------------------------
@@ -75,9 +85,65 @@ y en nuestro .env copiamos esto
 FORWARD_DB_PORT=3007 entonces trabajaremos con el puertyo 
 php artisan config:cache
 -------------------------------
-capitlos
-video 9 --- capitulo 6
+
 docker run --name mysql-server -e MYSQL_ROOT_HOST=% -e MYSQL_ROOT_PASSWORD=12345 -p 3306:3306 -d mysql/mysql-server
+
+
+
+## Comandos de npm requisitos
+Crear Dropzone https://docs.dropzone.dev/getting-started/installation/npm-or-yarn
+```bash
+sail npm install --save dropzone
+sail artisan make:controller ImagenController
+```
+
+
+
+## Para redimensionar imagenes en laravel es 
+
+https://image.intervention.io/v2/introduction/installation
+
+```bash
+sail composer require intervention/image
+```
+lo instalamos en laravel de la forma de ir a config app.php
+
+config/app.php
+```php
+$providers[
+Intervention\Image\ImageServiceProvider::class
+]
+$aliases [
+'Image' => Intervention\Image\Facades\Image::class
+]
+```
+
+
+
+
+
+
+
+
+
+capitlos
+video 16 --- capitulo 12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
