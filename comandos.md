@@ -1,6 +1,6 @@
 #### Comandos usados hasta ahora
 capitlos
-video 16 --- capitulo 12
+video 16 --- capitulo 13
 ```bash
 
 sail artisan make:model Post
@@ -11,4 +11,7 @@ tambien se puede
 sail artisan make:model --migration --controller --factory Post
 
 sail artisan migrate
+
+- para volver hastas una migracion 
+sail artisan migrate:rollback --step=1
 ```

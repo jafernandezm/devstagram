@@ -123,11 +123,8 @@ $aliases [
 
 
 
-
-
-
 capitlos
-video 16 --- capitulo 12
+video 19 --- capitulo 1
 
 
 

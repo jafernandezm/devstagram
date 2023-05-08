@@ -19,17 +19,18 @@
         @vite('resources/js/app.js')
     </head>
     <body class="bg-gray-100">
-        <header class="p-5 border-b bg-white shadow">
+        <header class="p-5 bg-white border-b shadow">
 
          
-            <div class="container mx-auto flex justify-between items-center">
+            <div class="container flex items-center justify-between mx-auto">
                 <h1 class="text-3xl font-black">
-                    Dev
+                    <a href="/"><span>Dev</span></a>
+                    
                 </h1>
                 @auth
-                    <nav class="flex gap-2 items-center">
+                    <nav class="flex items-center gap-2">
                         <a href="{{route('posts.create')}}"
-                        class="flex items-center gap-2 bg-white border p-2 text-gray-600 rounded text-sm uppercase font-bold cursor-pointer"
+                        class="flex items-center gap-2 p-2 text-sm font-bold text-gray-600 uppercase bg-white border rounded cursor-pointer"
                         >
 
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -39,7 +40,7 @@
                             Crear Post
                         </a>
 
-                        <a  class="font-bold uppercase text-gray-600 text-sm" 
+                        <a  class="text-sm font-bold text-gray-600 uppercase" 
                         href="{{route('posts.index', auth()->user())}}"
                         >Hola: <span class="font-normal">
                             {{auth()->user()->username}}
@@ -48,7 +49,7 @@
 
                         <form action="{{route('logout')}}" method="POST">
                             @csrf
-                            <button type="submit" class="font-bold uppercase text-gray-600 text-sm"
+                            <button type="submit" class="text-sm font-bold text-gray-600 uppercase"
                         href="{{route('register')}}">Cerrar Session</a>
                         </form>
                         
@@ -56,9 +57,9 @@
                 @endauth
 
                 @guest
-                    <nav class="flex gap-2 items-start">
-                        <a  class="font-bold uppercase text-gray-600 text-sm" href="#">Login</a>
-                        <a class="font-bold uppercase text-gray-600 text-sm"
+                    <nav class="flex items-start gap-2">
+                        <a  class="text-sm font-bold text-gray-600 uppercase" href="{{route('login')}}">Login</a>
+                        <a class="text-sm font-bold text-gray-600 uppercase"
                         href="{{route('register')}}">Crear Cuenta</a>
                     </nav>
                 @endguest
@@ -76,13 +77,13 @@
         </header>
         
         <main class="container mx-auto mt-10">
-            <h2 class="font-black text-center text-3xl mb-10">
+            <h2 class="mb-10 text-3xl font-black text-center">
                 @yield('titulo')
             </h2>
             @yield('contenido')
         </main>
 
-        <footer class="mt-10 text-center p-5 text-gray-500 font-bold">
+        <footer class="p-5 mt-10 font-bold text-center text-gray-500">
             Dev -Todos los derechos reservados   {{now()->year}}
         </footer>
 

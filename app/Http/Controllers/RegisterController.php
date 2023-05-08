@@ -35,6 +35,8 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
+        
+
         //autenticar un usuario
         /*auth()->attempt([
             'email' => $request->email,
@@ -42,7 +44,7 @@ class RegisterController extends Controller
         ]);*/
         //otra forma 
         //con el metodo only se puede especificar que campos se van a enviar
-        auth()->attempt($request->only('email', 'password'));
+        auth()->attempt($request->only('username', 'password'));
 
         return redirect()->route('posts.index',[
             'user' => auth()->user()->username

@@ -14,16 +14,19 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-
+        //\dd($request);
         $this->validate($request, [
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required'
         ]);
+        //auth()->attempt($request->only('username', 'password'));
+
         //dd($request->only('email', 'password'));
-        if (!auth()->attempt($request->only('email', 'password'), $request->remember )) {
+        if (!auth()->attempt($request->only('username', 'password'), $request->remember )) {
             return back()->with('mensaje', 'Credenciales Inconrrectas');
         }
 
+    
         return redirect()->route('posts.index',[
             'user' => auth()->user()->username
         ]);
