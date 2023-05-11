@@ -14,4 +14,11 @@ sail artisan migrate
 
 - para volver hastas una migracion 
 sail artisan migrate:rollback --step=1
+
+
+Comentarios
+sail artisan make:model --migration --controller Comentario
+
+policy
+sail artisan make:policy PostPolicy --model=Post
 ```

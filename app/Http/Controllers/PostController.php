@@ -11,7 +11,8 @@ class PostController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth');
+        // si no esta logueado no puede acceder a la pagina excepto a index y show
+        $this->middleware('auth')->except(['index','show']);
     }
     
     public function index(User $user)
@@ -64,12 +65,29 @@ class PostController extends Controller
         
         return redirect()->route('posts.index', auth()->user()->username);
     }
-    public function show(Post $post){
+    public function show(User $user,Post $post ){
         //dd($post);
 
 
         return view('posts.show',[
-            'post' => $post
+            'post' => $post,
+            'user' => $user
         ]);
+    }
+
+    public function edit(User $user,Post $post){
+        //dd($post);
+        return view('posts.edit',[
+            'post' => $post,
+            'user' => $user
+        ]);
+    }
+
+    public function destroy(Post $post){
+        //dd($post);
+        $this->authorize('delete',$post);
+        $post->delete();
+        
+        return redirect()->route('posts.index', auth()->user()->username);
     }
 }
