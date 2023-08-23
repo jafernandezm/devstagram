@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Like;
 use App\Models\User;
 use App\Models\Comentario;
 use Illuminate\Database\Eloquent\Model;
@@ -31,5 +32,16 @@ class Post extends Model
         return $this->hasMany(Comentario::class);
     }
 
+    public function likes()
+    {
+        // va tener muchos likes
+        return $this->hasMany(Like::class);
+    }
+
+    public function checkLike(User $user)
+    {
+        // si el usuario le dio like a la foto
+        return $this->likes->contains('user_id',$user->id);
+    }
 
 }

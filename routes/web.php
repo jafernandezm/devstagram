@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ImagenController;
@@ -23,17 +24,17 @@ use App\Http\Controllers\ComentarioController;
 Route::get('/', function () {
     return view('principal');
 });
-
+//Rutas de registro
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 
 Route::post('/register', [RegisterController::class, 'store']);
 
-
+//Rutas de login y logout
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class,'store'])->name('logout');
 
-
+//Rutas de usaurio y post
 Route::get('/{user:username}', [PostController::class,'index'])->name('posts.index');
 Route::get('/posts/create', [PostController::class,'create'])->name('posts.create');
 Route::post('/posts', [PostController::class,'store'])->name('posts.store');
@@ -45,4 +46,13 @@ Route::post('/{user:username}/posts/{post}', [ComentarioController::class,'store
 
 
 Route::post('/imagenes', [ImagenController::class,'store'])->name('imagenes.store');
+
+//like a las fotos
+
+Route::post('/posts/{post}/likes', [LikeController::class,'store'])->name('posts.likes.store');
+
+Route::delete('/posts/{post}/likes', [LikeController::class,'destroy'])->name('posts.likes.destroy');
+
+
+//rutas de Pefil
 

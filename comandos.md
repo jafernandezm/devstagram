@@ -21,4 +21,11 @@ sail artisan make:model --migration --controller Comentario
 
 policy
 sail artisan make:policy PostPolicy --model=Post
+
+Like
+sail artisan make:model --migration --controller Like
+sail php artisan migrate
+
+Perfil Controller 
+sail artisan make:controller PerfilController
 ```
