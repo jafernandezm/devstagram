@@ -24,7 +24,7 @@
          
             <div class="container flex items-center justify-between mx-auto">
                 <h1 class="text-3xl font-black">
-                    <a href="/"><span>Dev</span></a>
+                    <a href="{{route('home')}}"><span>Dev</span></a>
                     
                 </h1>
                 @auth
