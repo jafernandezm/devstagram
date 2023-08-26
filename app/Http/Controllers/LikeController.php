@@ -10,14 +10,11 @@ class LikeController extends Controller
     //
     public function store(Request $request,Post $post)
     {
-        //validar
-        
-        //Almacenar
         $post->likes()->create([
             'user_id' => $request->user()->id, // id del usuario logueado
             //'like' => $request->like,
         ]);
-        //redireccionar
+    
         return back();
     }
     public function destroy(Request $request,Post $post){

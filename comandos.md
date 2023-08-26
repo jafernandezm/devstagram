@@ -68,10 +68,11 @@ sail artisan make:component ListarPost
     </div>
 
 
-
-
 ```
 
 ```bash
     sail artisan view:clear
 ```
+
+#instalar livewire en laravel
+

@@ -10,13 +10,23 @@
             <img src="{{ asset('uploads') . '/'. $post->imagen }}" alt="Imagen del post {{ $post->titulo}}">
             <div  class="p-3 flex items-center " >
                 @auth   
-                    @if ($post->checkLike(auth()->user() ))
+
+                    {{-- <livewire:like-post :post="$post" /> --}}
+                   {{--  @livewire('like-post', ['post' => '$post']) --}}
+
+                    @if( $post->checkLike(auth()->user()) )
                         <form action="{{route('posts.likes.destroy' , $post) }}" method="post">
                             @method('DELETE')
                             @csrf
                             <div class="my-4">
                                 <button type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="like" fill="red" class="h-6 w-6"><path d="M21.3,10.08A3,3,0,0,0,19,9H14.44L15,7.57A4.13,4.13,0,0,0,11.11,2a1,1,0,0,0-.91.59L7.35,9H5a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17.73a3,3,0,0,0,2.95-2.46l1.27-7A3,3,0,0,0,21.3,10.08ZM7,20H5a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H7Zm13-7.82-1.27,7a1,1,0,0,1-1,.82H9V10.21l2.72-6.12A2.11,2.11,0,0,1,13.1,6.87L12.57,8.3A2,2,0,0,0,14.44,11H19a1,1,0,0,1,.77.36A1,1,0,0,1,20,12.18Z"></path></svg>
+                                    <svg 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    class="h-6 w-6" 
+                                    fill="red" 
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
                                 </button>
                             </div>
                         </form>    
@@ -25,11 +35,18 @@
                             @csrf
                             <div class="my-4">
                                 <button type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="like" class="h-6 w-6"><path d="M21.3,10.08A3,3,0,0,0,19,9H14.44L15,7.57A4.13,4.13,0,0,0,11.11,2a1,1,0,0,0-.91.59L7.35,9H5a3,3,0,0,0-3,3v7a3,3,0,0,0,3,3H17.73a3,3,0,0,0,2.95-2.46l1.27-7A3,3,0,0,0,21.3,10.08ZM7,20H5a1,1,0,0,1-1-1V12a1,1,0,0,1,1-1H7Zm13-7.82-1.27,7a1,1,0,0,1-1,.82H9V10.21l2.72-6.12A2.11,2.11,0,0,1,13.1,6.87L12.57,8.3A2,2,0,0,0,14.44,11H19a1,1,0,0,1,.77.36A1,1,0,0,1,20,12.18Z"></path></svg>
+                                
+                                    <svg 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    class="h-6 w-6" 
+                                    fill="white" 
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
                                 </button>
                             </div>
                         </form>        
-                    @endif
+                    @endif 
                     
 
                 @endauth
@@ -69,6 +86,7 @@
             <div class="shadow bg-white p-5 mb-5">
 
                 @auth
+
                     <p class="text-xl font-bold text-center mb-4">Agrega un nuevo Comentario</p>
                     @if (session('mensaje'))
                         <div class="p-3 bg-green-500 text-white text-center rounded-lg mb-3 uppercase font-bold">

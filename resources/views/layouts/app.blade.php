@@ -13,10 +13,11 @@
         <!-- Styles -->
         {{-- <script src="{{asset('js/app.js')}}"></script> --}}
         @stack('styles')
-
+        @livewireStyles
         
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
+    
     </head>
     <body class="bg-gray-100">
         <header class="p-5 bg-white border-b shadow">
@@ -90,6 +91,6 @@
 
      
       
-
+        @livewireScripts
     </body>
 </html>
